@@ -1,0 +1,272 @@
+<script>
+  var password = prompt("임상 자료 보호를 위해 비밀번호를 입력하세요:");
+  if (password !== "원장님만의비밀번호") {
+    alert("비밀번호가 틀렸습니다.");
+    document.body.innerHTML = "권한이 없습니다.";
+    window.stop();
+  }
+</script>
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>자살 행동 및 비자살적 자해</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #1a365d;
+            color: white;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+            flex-shrink: 0;
+        }
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+        .left-panel {
+            width: 50%;
+            background-color: #f8fafc;
+            padding: 30px 40px;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-panel {
+            width: 50%;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3182ce;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 10px;
+            color: #3182ce;
+        }
+        .criteria-box {
+            background-color: #fff;
+            border: 1px solid #cbd5e0;
+            border-left: 4px solid #4299e1;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .criteria-box.warning {
+            border-left-color: #e53e3e;
+        }
+        .diff-box {
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .diff-box:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .diff-title {
+            font-weight: 700;
+            color: #2c5282;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .diff-content {
+            color: #4a5568;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            text-align: justify;
+        }
+        .scroll-content {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 10px;
+        }
+        .scroll-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .scroll-content::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }
+        .code-tag {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        ul.custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.custom-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        ul.custom-list li::before {
+            content: "•";
+            color: #4299e1;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header -->
+<div class="header">
+<div>
+<h1 class="text-3xl font-bold leading-tight">자살 행동 및 비자살적 자해</h1>
+<p class="text-blue-200 text-lg font-light mt-1">Suicidal Behavior and Nonsuicidal Self-Injury</p>
+</div>
+<div class="text-right">
+<p class="text-sm text-blue-300">DSM-5-TR 임상적 관심의 초점이 될 수 있는 기타 상태</p>
+<div class="flex items-center justify-end mt-2 space-x-2">
+<span class="bg-blue-800 text-xs px-2 py-1 rounded text-blue-100">T14.91</span>
+<span class="bg-blue-800 text-xs px-2 py-1 rounded text-blue-100">R45.88</span>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="content-area">
+<!-- Left Panel: Definition & Recording Guidelines -->
+<div class="left-panel">
+<div class="section-title">
+<i class="fas fa-book-medical"></i>
+<h2>정의 및 기록 지침 (Definition &amp; Recording)</h2>
+</div>
+<div class="scroll-content">
+<div class="criteria-box warning">
+<div class="flex items-center mb-2 border-b border-red-100 pb-1">
+<span class="code-tag bg-red-100 text-red-800">T14.91</span>
+<p class="font-bold text-red-700">자살 행동 (Suicidal Behavior)</p>
+</div>
+<ul class="custom-list">
+<li><p>행위의 결과로 최소한 <strong>어느 정도는 죽을 의도로</strong> 잠재적으로 자해적인 행동에 빠진 사람들을 위해 사용된다.</p></li>
+<li><p>삶을 끝내려는 의도의 증거는 행동이나 상황에서 명시적이거나 추론될 수 있다.</p></li>
+<li><p>자살 시도는 실제적 자해로 이어질 수도 있고, 그렇지 않을 수도 있다.</p></li>
+<li><p><strong>제외 기준:</strong> 개인이 다른 사람에 의해 설득되거나, 행동을 시작하기 전에 마음이 바뀌면(중단된 시도), 이 범주는 적용되지 않는다.</p></li>
+</ul>
+</div>
+<div class="criteria-box">
+<div class="flex items-center mb-2 border-b border-blue-100 pb-1">
+<span class="code-tag">R45.88</span>
+<p class="font-bold text-blue-700">비자살적 자해 (Nonsuicidal Self-Injury)</p>
+</div>
+<ul class="custom-list">
+<li><p><strong>자살 충동이 없는 상태에서</strong> 출혈, 타박상 또는 통증을 유발할 수 있는 일종의 의도적인 자해적 상해에 빠진 사람들을 위해 사용된다.</p></li>
+<li><p>예시: 칼로 긁음, 불태움, 찌름, 때림, 과도한 문지름 등.</p></li>
+</ul>
+</div>
+<div class="mt-2 p-3 bg-gray-100 rounded border border-gray-200">
+<p class="text-xs text-gray-600 font-medium mb-1"><i class="fas fa-history mr-1"></i>과거력 부호 (History Codes)</p>
+<ul class="text-xs text-gray-500 pl-4 list-disc">
+<li><p>Z91.51: 자살 행동의 과거력 (History of suicidal behavior)</p></li>
+<li><p>Z91.52: 비자살적 자해의 과거력 (History of nonsuicidal self-injury)</p></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Right Panel: Differentiation & Clinical Points -->
+<div class="right-panel">
+<div class="section-title">
+<i class="fas fa-microscope"></i>
+<h2>구분 및 임상 포인트 (Differentiation)</h2>
+</div>
+<div class="scroll-content">
+<div class="diff-box">
+<div class="diff-title"><span class="w-2 h-2 rounded-full bg-red-600 mr-2"></span>의도의 차이 (Intent)</div>
+<div class="diff-content">
+<p>가장 핵심적인 구분점은 '죽으려는 의도'의 유무이다. 자살 행동은 삶을 끝내려는 의도를 포함하는 반면, 비자살적 자해는 부정적 감정 해소, 자기 처벌, 또는 긍정적 기분 유도 등 죽음 이외의 목적을 가진다.</p>
+</div>
+</div>
+<div class="diff-box">
+<div class="diff-title"><span class="w-2 h-2 rounded-full bg-orange-500 mr-2"></span>치명성 (Lethality)</div>
+<div class="diff-content">
+<p>자살 시도는 종종 높은 치명성을 가질 수 있으나, 비자살적 자해는 대개 표면적인 조직 손상(베기, 화상 등)을 초래하며 즉각적인 생명의 위협은 낮은 편이다. 단, 반복적인 비자살적 자해도 심각한 신체 손상으로 이어질 수 있다.</p>
+</div>
+</div>
+<div class="diff-box">
+<div class="diff-title"><span class="w-2 h-2 rounded-full bg-yellow-500 mr-2"></span>반복성 (Chronicity)</div>
+<div class="diff-content">
+<p>비자살적 자해는 습관적이고 반복적인 경향이 강하며, 스트레스에 대한 부적응적 대처 기제로 자리 잡는 경우가 많다. 자살 행동은 단회성일 수도 있고 반복될 수도 있다.</p>
+</div>
+</div>
+<div class="diff-box">
+<div class="diff-title"><span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>임상적 평가의 중요성</div>
+<div class="diff-content">
+<p>자살 행동과 비자살적 자해는 공존할 수 있으며, 비자살적 자해 과거력이 있는 경우 자살 시도의 위험이 증가한다. 따라서 모든 자해 행동에 대해 자살 의도 여부를 철저히 평가해야 한다.</p>
+</div>
+</div>
+<div class="diff-box">
+<div class="diff-title"><span class="w-2 h-2 rounded-full bg-indigo-500 mr-2"></span>관련 진단과의 관계</div>
+<div class="diff-content">
+<p>이 두 가지 범주는 독립된 진단명이 아니라 임상적 관심의 초점이 되는 상태이다. '비자살적 자해장애'와 '자살 행동장애'는 추가 연구가 필요한 상태로 제안되어 있다.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
